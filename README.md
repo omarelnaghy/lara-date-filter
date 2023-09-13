@@ -17,7 +17,7 @@ set of convenient methods to filter records based on various date and time inter
 You can install the package via Composer:
 
 ```bash
-composer require yourusername/laravel-date-filtering-package
+composer require omar-elnaghy/laradate-filters
 ```
 
 ## Usage
