@@ -1,0 +1,19 @@
+{
+    "name": "omar-elnaghy/laradate-filters",
+    "description": "A Laravel package for advanced date filtering and manipulation",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "OmarElnaghy\\LaraDateFilters\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "omarelnaghy",
+            "email": "omarelnaghy53@gmail.com"
+        }
+    ],
+    "tag": "1.0.0",
+    "require": {}
+}
