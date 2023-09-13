@@ -77,7 +77,7 @@ trait BuilderTrait
     public function __call($method, $parameters)
     {
         $matches = [];
-        $conventions = config('app.custom_date_filter_convention', []);
+        $conventions = config('lara_date_filter.custom_date_filter_convention', []);
         $conventions = array_merge($conventions, ['filterByDate{duration}{unit}Range']);
 
         if (!empty($conventions)) {
