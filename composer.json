@@ -15,5 +15,12 @@
         }
     ],
     "tag": "1.0.0",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OmarElnaghy\\LaraDateFilters\\ServiceProvider"
+            ]
+        }
+    },
     "require": {}
 }

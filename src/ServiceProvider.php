@@ -10,13 +10,17 @@ class ServiceProvider extends laravelServiceProvider
 
     public function register()
     {
+
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/lara_date_filter.php', 'lara_date_filter'
+            __DIR__ . '/config/lara_date_filter.php', 'lara_date_filter'
         );
+
     }
 
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/config/lara_date_filter.php'=> config_path('lara_date_filter.php')
+        ]);
     }
 }

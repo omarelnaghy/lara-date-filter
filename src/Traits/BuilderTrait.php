@@ -5,9 +5,13 @@ namespace OmarElnaghy\LaraDateFilters\Traits;
 
 use Carbon\Carbon;
 use OmarElnaghy\LaraDateFilters\Enums\DateRange;
+use OmarElnaghy\LaraDateFilters\Exceptions\ConventionException;
+use OmarElnaghy\LaraDateFilters\Exceptions\DateException;
 
 trait BuilderTrait
 {
+    public array $dateUnits = ['Seconds', 'Minutes', 'Hours', 'Days', 'Weeks', 'Months'];
+
     public function getClassVars()
     {
         return $this->getModel()->dateColumn ?? "created_at";
@@ -67,14 +71,46 @@ trait BuilderTrait
         return $this->FilterByDateRange($duration, 'month', $date, $direction, $range);
     }
 
+    /**
+     * @throws ConventionException
+     */
     public function __call($method, $parameters)
     {
         $matches = [];
-        $pattern = '/^(filterByDate)(\d+)([A-Za-z]+)(Range)$/';
-        if (preg_match($pattern, $method, $matches)) {
-            return $this->filterByDateRange($matches[2], $matches[3], ...$parameters);
-        }
+        $conventions = config('app.custom_date_filter_convention', []);
+        $conventions = array_merge($conventions, ['filterByDate{duration}{unit}Range']);
 
+        if (!empty($conventions)) {
+            foreach ($conventions as $convention) {
+                $pattern = str_replace(['{duration}', '{unit}'], ['(\d+)', '([A-Za-z]+)'], $convention);
+                $patternWithoutNumeric = explode('(\d+)', $pattern);
+                $patternWithSlash = $patternWithoutNumeric[0] . '/';
+
+                if (preg_match("/^$pattern$/", $method, $matches) || preg_match("/^$patternWithSlash", $method, $matches)) {
+                    $this->validateConvention($matches[1], $matches[2]);
+                    return $this->filterByDateRange($matches[1], $matches[2], ...$parameters);
+                }
+            }
+        }
         return parent::__call($method, $parameters);
     }
+
+    /**
+     * @throws ConventionException
+     */
+    private function validateConvention($duration, $unit): void
+    {
+        if (!isset($duration) || !is_numeric($duration)) {
+            throw  ConventionException::missingDuration();
+        }
+        if (!isset($unit) || !is_numeric($duration)) {
+            throw  ConventionException::missingDateUnit();
+        }
+
+        if (!in_array($unit, $this->dateUnits, true)) {
+            throw  ConventionException::invalidDateUnit();
+        }
+    }
+
+
 }
