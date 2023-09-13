@@ -2,10 +2,6 @@
 
 A Laravel package for advanced date filtering and manipulation
 
-![GitHub](https://img.shields.io/github/license/omarelnaghy/laravel-date-filtering-package)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/omarelnaghy/laravel-date-filtering-package)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/omarelnaghy/laravel-date-filtering-package/CI)
-
 Laravel Date Filtering is a package that simplifies date-based filtering for your Laravel Eloquent models. It provides a
 set of convenient methods to filter records based on various date and time intervals.
 
@@ -13,8 +9,6 @@ set of convenient methods to filter records based on various date and time inter
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Key Features](#key-features)
-- [Available Filters](#available-filters)
 - [Examples](#examples)
   
 
