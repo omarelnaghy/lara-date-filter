@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use OmarElnaghy\LaraDateFilters\Enums\DateRange;
 use OmarElnaghy\LaraDateFilters\Exceptions\ConventionException;
 use OmarElnaghy\LaraDateFilters\Exceptions\DateException;
+use PHPUnit\Exception;
 
 trait BuilderTrait
 {
@@ -87,8 +88,13 @@ trait BuilderTrait
                 $patternWithSlash = $patternWithoutNumeric[0] . '/';
 
                 if (preg_match("/^$pattern$/", $method, $matches) || preg_match("/^$patternWithSlash", $method, $matches)) {
-                    $this->validateConvention($matches[1], $matches[2]);
-                    return $this->filterByDateRange($matches[1], $matches[2], ...$parameters);
+                    if (isset($matches[1],$matches[2]))
+                        try {
+                            $this->validateConvention($matches[1], $matches[2]);
+                            return $this->filterByDateRange($matches[1], $matches[2], ...$parameters);
+                        } catch (Exception $exception) {
+                            return parent::__call($method, $parameters);
+                        }
                 }
             }
         }
