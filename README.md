@@ -19,6 +19,10 @@ You can install the package via Composer:
 ```bash
 composer require omar-elnaghy/laradate-filters
 ```
+then publish config file
+```bash
+php artisan vendor:publish --provider="OmarElnaghy\LaraDateFilters\ServiceProvider"
+```
 
 ## Usage
 
