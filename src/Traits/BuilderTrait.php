@@ -11,7 +11,7 @@ use PHPUnit\Exception;
 
 trait BuilderTrait
 {
-    public array $dateUnits = ['Seconds', 'Minutes', 'Hours', 'Days', 'Weeks', 'Months'];
+    public array $dateUnits = ['Seconds', 'Minutes', 'Hours', 'Days', 'Weeks', 'Months','Years'];
 
     public function getClassVars()
     {
