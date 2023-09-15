@@ -75,8 +75,7 @@ $range = \OmarElnaghy\LaraDateFilters\Enums\DateRange::EXCLUSIVE;
 ***The key feature***
 
 The key feature of this trait is its ability to catch and handle dynamic date filtering methods based on a simple naming
-convention, making it incredibly convenient and powerful for developers. Here's how you can highlight this feature in a
-catchy way:
+convention, making it incredibly convenient and powerful for developers:
 
 Dynamic Date Filtering Magic
 
