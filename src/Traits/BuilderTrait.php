@@ -113,7 +113,7 @@ trait BuilderTrait
             throw  ConventionException::missingDateUnit();
         }
 
-        if (!in_array($unit, $this->dateUnits, true)) {
+        if (!in_array($unit, $this->dateUnits)) {
             throw  ConventionException::invalidDateUnit();
         }
     }
