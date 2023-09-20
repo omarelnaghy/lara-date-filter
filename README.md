@@ -29,7 +29,7 @@ php artisan vendor:publish --provider="OmarElnaghy\LaraDateFilters\ServiceProvid
 Date Filtering Methods: Use the provided methods like FilterByDateRange, FilterByDateHoursRange,
 FilterByDateMinutesRange, etc., to filter records based on your specific criteria.
 
-```bash
+```php
 
 use Illuminate\Database\Eloquent\Model;
 use OmarElnaghy\LaraDateFilters\Traits\Builder\PackageBuilder;
