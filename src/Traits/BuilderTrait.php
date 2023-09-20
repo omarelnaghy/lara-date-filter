@@ -11,7 +11,7 @@ use PHPUnit\Exception;
 
 trait BuilderTrait
 {
-    public array $dateUnits = ['Seconds', 'Minutes', 'Hours', 'Days', 'Weeks', 'Months','Years'];
+    public array $dateUnits = ['Seconds', 'Minutes', 'Hours', 'Days', 'Weeks', 'Months', 'Years'];
 
     public function getClassVars()
     {
@@ -88,7 +88,7 @@ trait BuilderTrait
                 $patternWithSlash = $patternWithoutNumeric[0] . '/';
 
                 if (preg_match("/^$pattern$/", $method, $matches) || preg_match("/^$patternWithSlash", $method, $matches)) {
-                    if (isset($matches[1],$matches[2]))
+                    if (isset($matches[1], $matches[2]))
                         try {
                             $this->validateConvention($matches[1], $matches[2]);
                             return $this->filterByDateRange($matches[1], $matches[2], ...$parameters);
