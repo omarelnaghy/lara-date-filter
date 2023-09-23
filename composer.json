@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "nesbot/carbon": "^2.70",
+        "nesbot/carbon": "^2.55.0",
         "illuminate/database": "^9.18|^10.0"
     },
     "autoload": {
