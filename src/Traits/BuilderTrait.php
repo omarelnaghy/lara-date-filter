@@ -91,15 +91,15 @@ trait BuilderTrait
                 $patternWithoutNumeric = explode('(\d+)', $pattern);
                 $patternWithSlash = $patternWithoutNumeric[0] . '/';
                 if (preg_match("/^$pattern$/", $method, $matches) || preg_match("/^$patternWithSlash", $method, $matches)) {
-                    if (isset($matches[1], $matches[2]))
+                    if (isset($matches[1], $matches[2])){
                         try {
                             $this->validateConvention($matches[1], $matches[2]);
                             return $this->filterByDateRange($matches[1], $matches[2], ...$parameters);
                         } catch (Exception $exception) {
                             return parent::__call($method, $parameters);
                         }
+                    }
                 }
-
             }
         }
         return parent::__call($method, $parameters);
