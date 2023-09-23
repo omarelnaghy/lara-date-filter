@@ -90,7 +90,6 @@ trait BuilderTrait
                 $pattern = str_replace(['{duration}', '{unit}'], ['(\d+)', '([A-Za-z]+)'], $convention);
                 $patternWithoutNumeric = explode('(\d+)', $pattern);
                 $patternWithSlash = $patternWithoutNumeric[0] . '/';
-                dd((preg_match("/^$pattern$/", $method, $matches) || preg_match("/^$patternWithSlash", $method, $matches)));
                 if (preg_match("/^$pattern$/", $method, $matches) || preg_match("/^$patternWithSlash", $method, $matches)) {
                     if (isset($matches[1], $matches[2]))
                         try {
