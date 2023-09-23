@@ -3,6 +3,10 @@
     "description": "A Laravel package for advanced date filtering and manipulation",
     "type": "library",
     "license": "MIT",
+    "require": {
+        "nesbot/carbon": "^2.70",
+        "illuminate/database": "^9.18|^10.0"
+    },
     "autoload": {
         "psr-4": {
             "OmarElnaghy\\LaraDateFilters\\": "src/"
@@ -21,6 +25,5 @@
                 "OmarElnaghy\\LaraDateFilters\\ServiceProvider"
             ]
         }
-    },
-    "require": {}
+    }
 }

@@ -2,10 +2,7 @@
 
 namespace OmarElnaghy\LaraDateFilters\Exceptions;
 
-use Exception;
-
-
-class ConventionException extends Exception
+class ConventionException extends LaraDateFiltersException
 {
     public static function missingDuration(): ConventionException
     {

@@ -2,10 +2,7 @@
 
 namespace OmarElnaghy\LaraDateFilters\Exceptions;
 
-use Exception;
-
-
-class DateException extends Exception
+class DateException extends LaraDateFiltersException
 {
     public static function invalidValue(): DateException
     {
