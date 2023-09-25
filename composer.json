@@ -3,11 +3,6 @@
     "description": "A Laravel package for advanced date filtering and manipulation",
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "OmarElnaghy\\LaraDateFilters\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "omarelnaghy",
@@ -15,12 +10,20 @@
         }
     ],
     "tag": "1.0.0",
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "OmarElnaghy\\LaraDateFilters\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "OmarElnaghy\\LaraDateFilters\\ServiceProvider"
             ]
         }
-    },
-    "require": {}
+    }
 }
