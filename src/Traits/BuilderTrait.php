@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OmarElnaghy\LaraDateFilters\Traits;
 
 use Carbon\Carbon;
+use Illuminate\Support\Carbon as SupportCarbon;
 use OmarElnaghy\LaraDateFilters\Enums\DateRange;
 use OmarElnaghy\LaraDateFilters\Enums\SearchDirection;
 use OmarElnaghy\LaraDateFilters\Exceptions\ConventionException;
@@ -20,7 +21,7 @@ trait BuilderTrait
         return $this->getModel()->dateColumn ?? 'created_at';
     }
 
-    public function FilterByDateRange(int $duration, string $dateUnit, Carbon $date, SearchDirection $direction = SearchDirection::AFTER, DateRange $range = DateRange::INCLUSIVE)
+    public function FilterByDateRange(int $duration, string $dateUnit, Carbon|SupportCarbon $date, SearchDirection $direction = SearchDirection::AFTER, DateRange $range = DateRange::INCLUSIVE)
     {
         $end = clone $date;
         $start = clone $date;
@@ -47,32 +48,32 @@ trait BuilderTrait
         DateException::invalidValue();
     }
 
-    public function FilterByDateHoursRange(int $duration, SearchDirection $direction, Carbon $date, DateRange $range = DateRange::INCLUSIVE)
+    public function FilterByDateHoursRange(int $duration, SearchDirection $direction, Carbon|SupportCarbon $date, DateRange $range = DateRange::INCLUSIVE)
     {
         return $this->FilterByDateRange($duration, 'hour', $date, $direction, $range);
     }
 
-    public function FilterByDateMinutesRange(int $duration, SearchDirection $direction, Carbon $date, DateRange $range = DateRange::INCLUSIVE)
+    public function FilterByDateMinutesRange(int $duration, SearchDirection $direction, Carbon|SupportCarbon $date, DateRange $range = DateRange::INCLUSIVE)
     {
         return $this->FilterByDateRange($duration, 'minute', $date, $direction, $range);
     }
 
-    public function FilterByDateSecondsRange(int $duration, SearchDirection $direction, Carbon $date, DateRange $range = DateRange::INCLUSIVE)
+    public function FilterByDateSecondsRange(int $duration, SearchDirection $direction, Carbon|SupportCarbon $date, DateRange $range = DateRange::INCLUSIVE)
     {
         return $this->FilterByDateRange($duration, 'second', $date, $direction, $range);
     }
 
-    public function FilterByDateDaysRange(int $duration, SearchDirection $direction, Carbon $date, DateRange $range = DateRange::INCLUSIVE)
+    public function FilterByDateDaysRange(int $duration, SearchDirection $direction, Carbon|SupportCarbon $date, DateRange $range = DateRange::INCLUSIVE)
     {
         return $this->FilterByDateRange($duration, 'day', $date, $direction, $range);
     }
 
-    public function FilterByDateWeeksRange(int $duration, SearchDirection $direction, Carbon $date, DateRange $range = DateRange::INCLUSIVE)
+    public function FilterByDateWeeksRange(int $duration, SearchDirection $direction, Carbon|SupportCarbon $date, DateRange $range = DateRange::INCLUSIVE)
     {
         return $this->FilterByDateRange($duration, 'week', $date, $direction, $range);
     }
 
-    public function FilterByDateMonthsRange(int $duration, SearchDirection $direction, Carbon $date, DateRange $range = DateRange::INCLUSIVE)
+    public function FilterByDateMonthsRange(int $duration, SearchDirection $direction, Carbon|SupportCarbon $date, DateRange $range = DateRange::INCLUSIVE)
     {
         return $this->FilterByDateRange($duration, 'month', $date, $direction, $range);
     }

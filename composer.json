@@ -12,6 +12,8 @@
     "tag": "1.0.0",
     "require": {
         "php": "^8.1",
+        "illuminate/database": "^9.0|^10.0",
+        "illuminate/support": "^9.0|^10.0",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
