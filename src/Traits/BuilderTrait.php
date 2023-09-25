@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace OmarElnaghy\LaraDateFilters\Traits;
 
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Carbon as SupportCarbon;
 use OmarElnaghy\LaraDateFilters\Enums\DateRange;
 use OmarElnaghy\LaraDateFilters\Enums\SearchDirection;
 use OmarElnaghy\LaraDateFilters\Exceptions\ConventionException;
 use OmarElnaghy\LaraDateFilters\Exceptions\DateException;
-use PHPUnit\Exception;
 
 trait BuilderTrait
 {
@@ -45,7 +45,7 @@ trait BuilderTrait
             return $this->whereBetween($this->getClassVars(), [$start, $date]);
         }
 
-        DateException::invalidValue();
+        throw DateException::invalidValue();
     }
 
     public function FilterByDateHoursRange(int $duration, SearchDirection $direction, Carbon|SupportCarbon $date, DateRange $range = DateRange::INCLUSIVE)
@@ -78,9 +78,6 @@ trait BuilderTrait
         return $this->FilterByDateRange($duration, 'month', $date, $direction, $range);
     }
 
-    /**
-     * @throws ConventionException
-     */
     public function __call($method, $parameters)
     {
         $matches = [];
