@@ -1,26 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OmarElnaghy\LaraDateFilters;
 
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-use Illuminate\Support\ServiceProvider as laravelServiceProvider;
-
-class ServiceProvider extends laravelServiceProvider
+class ServiceProvider extends PackageServiceProvider
 {
-
-    public function register()
+    public function configurePackage(Package $package): void
     {
-
-        $this->mergeConfigFrom(
-            __DIR__ . '/config/lara_date_filter.php', 'lara_date_filter'
-        );
-
-    }
-
-    public function boot()
-    {
-        $this->publishes([
-            __DIR__ . '/config/lara_date_filter.php'=> config_path('lara_date_filter.php')
-        ]);
+        $package
+            ->name('lara-date-filter')
+            ->hasConfigFile('lara_date_filter');
     }
 }
